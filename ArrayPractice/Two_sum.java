@@ -2,7 +2,7 @@
 import java.util.*;
 
 //  Use  Two Pointer Approach
-// if array is sorted 
+// if array is sorted    // not optimal solution
 public class Two_sum {
   public static ArrayList<Integer> list(int arr[], int tar) {
     ArrayList<Integer> list1 = new ArrayList<>();

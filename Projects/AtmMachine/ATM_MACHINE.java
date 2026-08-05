@@ -1,5 +1,4 @@
 package AtmMachine;
-
 import java.util.Scanner;
 
 // ATM MACHINE 

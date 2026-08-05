@@ -2,7 +2,7 @@ public class Check_One_Segments {
     
     // is problem mai hame check karna ki first(1) charecter ke baad bhi koi one
     // aaraha hai nahi
-    // phale chercter ke sath multiple ho sakte hai lekin
+    // phale character ke sath multiple ho sakte hai lekin
     // agar ik bhi zero ke baad aata hai to allow ni hoga
     // agar aa raha hai to return false karo
     // agar nahi aa raha hai to true return karo
