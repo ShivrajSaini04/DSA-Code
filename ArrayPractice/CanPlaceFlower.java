@@ -1,0 +1,26 @@
+
+class Solution {
+    public boolean canPlaceFlowers(int[] arr, int k) {
+        int n = arr.length;
+        if ((k == 1 && n == 1) && arr[0] == 0)
+            return true;
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == 0 && ((i == 0 || arr[i - 1] == 0) && (i == n - 1 || arr[i + 1] == 0))) {
+                arr[i] = 1;
+                k--;
+            }
+        }
+
+        return k <= 0;
+    }
+}
+
+public class CanPlaceFlower {
+    public static void main(String[] args) {
+        int[] flowerbed = {1, 0, 0, 0, 1};
+        int n = 1;
+        Solution obj = new Solution();
+        System.out.println(obj.canPlaceFlowers(flowerbed, n));
+    }
+}

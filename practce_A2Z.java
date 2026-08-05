@@ -1,4 +1,6 @@
 import java.util.*;
+
+import org.w3c.dom.Node;
 public class practce_A2Z {
     // static int[] twosum(int[] arr , int target){
     //   HashMap<Integer,Integer> map = new HashMap<>();
@@ -103,12 +105,74 @@ public class practce_A2Z {
         //     }
         //     System.out.println();
         // }
-    String str = "i am iron man";
+    // String str = "i am iron man";
     
-    System.out.println(revrseword(str));
+    // System.out.println(revrseword(str));
+
+        Node root = new Node(1);
+        Node a = new Node(2);
+        Node b = new Node(3);
+        root.left = a;
+        root.right = b;
+        Node c = new Node(4);
+        Node d = new Node(5);
+        a.left = c;
+        a.right = d;
+        Node e = new Node(6);
+        Node f = new Node(-7);
+        b.left = e;
+        b.right = f;
+        ArrayList<Integer> list = new ArrayList<>();
+        list = Boundary(root);
+        System.out.println(list);
          
     }
 
+
+    // boundary trevarsal 
+    ArrayList<Integer> list;
+
+    ArrayList<Integer> Boundary(Node root){
+        if (root.left != null || root.right != null)
+            list.add(root.data);
+        if (root.left != null)
+            leftBoundary(root.left);
+        bottomBoundary(root);
+        if (root.right != null)
+            rightBoundary(root.right);
+        return list;
+    }
+
+
+    void leftBoundary(Node root) {
+        if (root.left == null && root.right == null)
+            return;
+        list.add(root.data);
+        if (root.left == null)
+            leftBoundary(root.right);
+        else
+            leftBoundary(root.left);
+    }
+
+    void bottomBoundary(Node root) {
+        if (root == null)
+            return;
+        if (root.left == null && root.right == null)
+            list.add(root.data);
+
+        bottomBoundary(root.left);
+        bottomBoundary(root.right);
+    }
+
+    void rightBoundary(Node root) {
+        if (root.left == null && root.right == null)
+            return;
+        if (root.right == null)
+            rightBoundary(root.left);
+        else
+            rightBoundary(root.right);
+        list.add(root.data);
+    }
 
     // revrse word in string
 

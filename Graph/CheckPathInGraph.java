@@ -1,0 +1,60 @@
+package Graph;
+
+import java.util.*;
+class Solution {
+    public boolean validPath(int n, int[][] edges, int source, int destination) {
+        boolean[] visit = new boolean[n];
+        List<List<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            List<Integer> list = new ArrayList<>();
+            adj.add(list);
+        }
+
+        for (int i = 0; i < edges.length; i++) {
+            adj.get(edges[i][0]).add(edges[i][1]);
+            adj.get(edges[i][1]).add(edges[i][0]);
+        }
+
+       // bfs(source, adj, visit, destination);
+       dfs(source, adj, visit, destination);
+        return visit[destination];
+    }
+
+    
+
+     void dfs(int start, List<List<Integer>> adj, boolean[] visit, int destination) {
+         visit[start] = true;
+         if (start == destination) return;
+         for (int ele : adj.get(start)) {
+             if (!visit[ele]) {
+                 dfs(ele, adj, visit, destination);
+             }
+         }
+    }
+
+
+
+    void bfs(int start, List<List<Integer>> adj, boolean[] visit, int destination) {
+        Queue<Integer> q = new LinkedList<>();
+        q.add(start);
+        visit[start] = true;
+        while (q.size() > 0) {
+            int temp = q.poll();
+            for (int ele : adj.get(temp)) {
+                if (!visit[ele]) {
+                    q.add(ele);
+                    visit[ele] = true;
+                    if (ele == destination)
+                        return;
+                }
+            }
+        }
+    }
+}
+
+
+public class CheckPathInGraph {
+    public static void main(String[] args) {
+        
+    }
+}
